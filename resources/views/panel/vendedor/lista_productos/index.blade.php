@@ -18,6 +18,8 @@
             <a href="{{ route('producto.create') }}" class="btn btn-success text-uppercase">
                 Nuevo Producto
             </a>
+
+            <a class="btn btn-danger" href="{{ route('generate-pdf')}}">PDF</a>
         </div>
         
         @if(session('alert'))
