@@ -4,6 +4,8 @@
 {{-- Titulo en las tabulaciones del Navegador --}}
 @section('title', 'Productos')
 
+@section('plugins.Datatables', true)
+
 {{-- Titulo en el contenido de la Pagina --}}
 @section('content_header')
     <h1>Lista de Productos</h1>
@@ -99,5 +101,34 @@
 
 {{-- Importacion de Archivos JS --}}
 @section('js')
+    <script>
+        let configurationDataTable = {
+            searching: true,
+            pageLength: 5,
+            lengthMenu: [[5,10,20,-1],[5,10,20,'Todos']], 
+            language: {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "search": "_INPUT_",
+                "searchPlaceholder": "¿Que buscas?",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                }
+            },
+        }
 
+        $(function() {
+            table = $('#tabla-productos').DataTable(configurationDataTable);
+        });
+    </script>
 @stop
