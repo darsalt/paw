@@ -8,5 +8,9 @@ Route::get('/', function () {
     return view('panel.index');
 });
 
-Route::resource('/productos', ProductoController::class)->names('producto');
+Route::group(['middleware' => ['can:lista_productos']], function () {
+    Route::resource('/productos', ProductoController::class)->names('producto');
+});
+
 Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+
