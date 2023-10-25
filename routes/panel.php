@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('panel.index');
 });
 
-Route::group(['middleware' => ['can:lista_productos']], function () {
+Route::group(['middleware' => ['role:vendedor']], function () {
     Route::resource('/productos', ProductoController::class)->names('producto');
 });
 
